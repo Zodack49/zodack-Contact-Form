@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RE/MAX Contact</title>
+    <link rel="stylesheet" href="styles.css?v=3" />
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="page-shell">
+        <main class="form-panel">
+            <header class="panel-header">
+                <div class="brand-logo" aria-label="RE/MAX">
+                    <span class="balloon-mark" aria-hidden="true"></span>
+                    <span>RE/MAX</span>
+                </div>
+                <h1>Let's get started!</h1>
+                <p>Fisrt step to making this funds!</p>
+            </header>
+
+            <form id="contactForm" class="contact-form">
+                <label class="form-group field-select">
+                    <span>Select from email</span>
+                    <select id="selectedEmail" name="selectedEmail" required>
+                        <option value="" disabled selected>Select email</option>
+                        <option value="application@remaxglobalhomes.com">application@remaxglobalhomes.com</option>
+                        <option value="leasing@remaxglobalhomes.com">leasing@remaxglobalhomes.com</option>
+                    </select>
+                </label>
+
+                <div class="row-grid">
+                    <label class="form-group field-user">
+                        <span>Your Name</span>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required />
+                    </label>
+                    <label class="form-group field-email">
+                        <span>Your Email</span>
+                        <input type="email" id="email" name="email" placeholder="Your Email" required />
+                    </label>
+                </div>
+
+                <label class="form-group full-width field-subject">
+                    <span>Subject</span>
+                    <input type="text" id="subject" name="subject" placeholder="Subject" required />
+                </label>
+
+                <label class="form-group full-width field-message">
+                    <span>Message</span>
+                    <div id="editor"></div>
+                    <input type="hidden" id="message" name="message" />
+                    <input type="hidden" id="ts" name="ts" />
+                    <input type="text" id="website" name="website" class="honeypot" autocomplete="off" />
+                </label>
+
+                <label class="form-group full-width file-group field-file">
+                    <span>PDF File (optional)</span>
+                    <input type="file" id="pdfFile" name="pdfFile" accept="application/pdf" />
+                    <p class="helper-text">Optional file upload for attachments.</p>
+                </label>
+
+                <div class="actions">
+                    <button type="submit" class="submit-btn">Send Message</button>
+                    <div id="formStatus" class="status-text"></div>
+                </div>
+
+                <div id="successBanner" class="success-banner" hidden>Message sent successfully!</div>
+            </form>
+
+            <footer class="card-footer">
+                <div class="legal-links">
+                    <a href="https://www.remax.com/terms-of-use" target="_blank" rel="noopener noreferrer">Terms of
+                        Use</a>
+                    <a href="https://www.remax.com/privacy-notice" target="_blank" rel="noopener noreferrer">Privacy
+                        Notice</a>
+                </div>
+            </footer>
+
+            <button id="signOutBtn" class="sign-out-btn" type="button">Sign Out</button>
+        </main>
+    </div>
+
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
