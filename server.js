@@ -37,7 +37,7 @@ function sanitizeHtml(html = '') {
 }
 
 function tightenEmailBodyHtml(html = '') {
-  const compactParagraphStyle = 'margin:0 0 6px 0;line-height:20px;';
+  const compactParagraphStyle = 'margin:0 0 0px 0;line-height:20px;';
 
   return sanitizeHtml(html)
     .replace(/<p\b[^>]*>\s*(?:<br\s*\/?>)?\s*<\/p>/gi, '<div style="height:4px;line-height:4px;font-size:4px;">&nbsp;</div>')
@@ -266,7 +266,7 @@ function buildEmailHtml({ name, email, messageHtml }) {
       }
 
       .email-message p {
-        margin: 0 0 8px 0;
+        margin: 0 0 0px 0;
       }
 
       .email-message p:last-child {
@@ -279,12 +279,12 @@ function buildEmailHtml({ name, email, messageHtml }) {
       <div class="email-container" style="width:100%;max-width:600px;margin:0 auto;background:#ffffff;border-radius:3px;overflow:hidden;">
         <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="border-collapse:collapse;background:#ffffff;width:100%;border-radius:3px;">
           <tr>
-            <td style="padding:20px 10px;text-align:center;">
+            <td style="padding:20px 10px 0 10px;text-align:center;border-bottom:1px solid #dddddd;">
               <img src="https://userimg-assets.customeriomail.com/images/client-env-175803/1743774224665_New_RMX_Mark_R4_RGB_dark_01JR0GPG0SRCBV6ME1CTPMTR9R.png" width="174" alt="RE/MAX" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;max-width:174px;font-size:13px;" />
             </td>
           </tr>
           <tr>
-            <td class="email-content-pad" style="padding:0 24px 24px 24px;color:#404041;font-size:14px;line-height:22px;">
+            <td class="email-content-pad" style="padding:12px 24px 24px 24px;color:#404041;font-size:14px;line-height:22px;">
               <h1 style="margin:0 0 20px;font-size:24px;font-weight:500;color:#404041;">Dear ${safeName},</h1>
               <div class="email-message" style="margin-bottom:22px;color:#404041;font-size:14px;line-height:20px;text-align:justify;text-justify:inter-word;">${safeMessage}</div>
             </td>
@@ -421,10 +421,10 @@ async function createTransporter(senderAddress = '') {
       console.log('Using Ethereal test email account:', testAccount.user);
       return {
         deliveryMode: 'ethereal',
-      transporter: nodemailer.createTransport({
-        host: testAccount.smtp.host,
-        port: testAccount.smtp.port,
-        secure: testAccount.smtp.secure,
+        transporter: nodemailer.createTransport({
+          host: testAccount.smtp.host,
+          port: testAccount.smtp.port,
+          secure: testAccount.smtp.secure,
           auth: {
             user: testAccount.user,
             pass: testAccount.pass
