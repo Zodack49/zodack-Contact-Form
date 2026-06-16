@@ -10,8 +10,8 @@ const PORT = process.env.PORT || 3000;
 const FOOTER_LOGO_PATH = path.join(__dirname, 'public', 'assets', 'Remaxlogo.png');
 const FOOTER_LOGO_CID = 'remax-footer-logo@global-contact-app';
 const ALLOWED_REPLY_TO_ADDRESSES = new Set([
-  'application@remaxglobalhomes.com',
-  'leasing@remaxglobalhomes.com'
+  'application@remaxprimeestate.com',
+  'leasing@remaxprimeestate.com'
 ]);
 
 const upload = multer({
@@ -388,14 +388,14 @@ ${messageText}`;
 
 async function createTransporter(senderAddress = '') {
   const mailMode = (process.env.MAIL_MODE || '').toLowerCase();
-  const mailPort = Number(process.env.MAIL_PORT || 465);
+  const mailPort = Number(process.env.MAIL_PORT || 587);
   const dkim = getDkimConfig(senderAddress);
 
   if (process.env.MAIL_HOST && process.env.MAIL_USER && process.env.MAIL_PASS && mailPort !== Number(PORT)) {
     const smtpOptions = {
       host: process.env.MAIL_HOST,
       port: mailPort,
-      secure: process.env.MAIL_SECURE ? process.env.MAIL_SECURE === 'true' : mailPort === 465,
+      secure: process.env.MAIL_SECURE ? process.env.MAIL_SECURE === 'true' : mailPort === 587,
       connectionTimeout: 15000,
       greetingTimeout: 15000,
       socketTimeout: 30000,
