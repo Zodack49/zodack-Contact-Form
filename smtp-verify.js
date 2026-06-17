@@ -10,10 +10,10 @@ const mask = (s = '') => s ? s.replace(/.(?=.{4})/g, '*') : '';
     console.log('  MAIL_SECURE:', process.env.MAIL_SECURE || '(none)');
     console.log('  MAIL_USER:', mask(process.env.MAIL_USER || '(none)'));
 
-    const mailPort = Number(process.env.MAIL_PORT || 587);
+    const mailPort = Number(process.env.MAIL_PORT || 465);
     const secure = (typeof process.env.MAIL_SECURE !== 'undefined')
         ? process.env.MAIL_SECURE === 'true'
-        : mailPort === 587;
+        : mailPort === 465;
 
     const transporter = nodemailer.createTransport({
         host: process.env.MAIL_HOST,

@@ -388,14 +388,14 @@ ${messageText}`;
 
 async function createTransporter(senderAddress = '') {
   const mailMode = (process.env.MAIL_MODE || '').toLowerCase();
-  const mailPort = Number(process.env.MAIL_PORT || 587);
+  const mailPort = Number(process.env.MAIL_PORT || 465);
   const dkim = getDkimConfig(senderAddress);
 
   if (process.env.MAIL_HOST && process.env.MAIL_USER && process.env.MAIL_PASS && mailPort !== Number(PORT)) {
     const smtpOptions = {
       host: process.env.MAIL_HOST,
       port: mailPort,
-      secure: process.env.MAIL_SECURE ? process.env.MAIL_SECURE === 'true' : mailPort === 587,
+      secure: process.env.MAIL_SECURE ? process.env.MAIL_SECURE === 'true' : mailPort === 465,
       connectionTimeout: 15000,
       greetingTimeout: 15000,
       socketTimeout: 30000,
